@@ -1,141 +1,82 @@
 import 'package:flutter/material.dart';
+import 'login_screen.dart';
+import 'signup_screen.dart';
+import '../Widgets/logo_widget.dart';
+import '../Widgets/custom_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Make the UI fully responsive using MediaQuery
-    final size = MediaQuery.sizeOf(context);
-    const primaryColor = Color(0xFF2260FF);
-
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: SingleChildScrollView(
+      backgroundColor: const Color(0xFFFFFFFF),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Logo image from assets
-              Image.asset(
-                'assets/Welcome_Screen_Logo.png',
-                width: size.width * 0.35, // Keep aspect ratio, responsive width
-                fit: BoxFit.contain,
+              const Spacer(),
+              const LogoWidget(
+                assetPath: 'assets/Welcome_Screen_Logo.png',
+                width: 180,
+                height: 180,
               ),
-
-              SizedBox(height: size.height * 0.03),
-
-              // "Skin" text
+              const SizedBox(height: 32),
               const Text(
-                'Skin',
+                'Welcome to Easy Clinic',
                 style: TextStyle(
-                  fontSize: 48,
-                  color: primaryColor,
-                  fontWeight: FontWeight.w300,
-                  height: 1.1,
-                ),
-                textAlign: TextAlign.center,
-              ),
-
-              // "Firts" text
-              const Text(
-                'Firts',
-                style: TextStyle(
-                  fontSize: 48,
-                  color: primaryColor,
-                  fontWeight: FontWeight.w300,
-                  height: 1.1,
-                ),
-                textAlign: TextAlign.center,
-              ),
-
-              SizedBox(height: size.height * 0.02),
-
-              // "Dermatology Center" text
-              const Text(
-                'Dermatology Center',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: primaryColor,
+                  fontSize: 28,
                   fontWeight: FontWeight.bold,
+                  color: Color(0xFF1A1A1A),
                 ),
                 textAlign: TextAlign.center,
               ),
-
-              SizedBox(height: size.height * 0.06),
-
-              // Description text
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
+              const SizedBox(height: 16),
+              const Text(
+                'Your health, our priority.',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Color(0xFF1A1A1A),
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const Spacer(),
+              CustomButton(
+                text: 'Login',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                  );
+                },
+              ),
+              const SizedBox(height: 16),
+              OutlinedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignupScreen()),
+                  );
+                },
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: const Color(0xFF1A1A1A),
+                  side: const BorderSide(color: Color(0xFFE0E0E0)),
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
                 child: const Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, \nsed do eiusmod tempor incididunt ut labore et dolore \nmagna aliqua.',
-                  style: TextStyle(fontSize: 12, color: Colors.grey),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-
-              SizedBox(height: size.height * 0.08),
-
-              // Log In Button
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // TODO: Navigate to Login Screen
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: primaryColor,
-                      foregroundColor: Colors.white,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'Log In',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                  'Sign Up',
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
-
-              SizedBox(height: size.height * 0.02),
-
-              // Sign Up Button
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      // TODO: Navigate to Sign Up Screen
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFDCE5FF),
-                      foregroundColor: primaryColor,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    child: const Text(
-                      'Sign Up',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              const SizedBox(height: 24),
             ],
           ),
         ),

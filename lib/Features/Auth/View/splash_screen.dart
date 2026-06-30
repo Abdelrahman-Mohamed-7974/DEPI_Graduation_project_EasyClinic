@@ -1,73 +1,52 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'welcome_screen.dart';
+import '../Widgets/logo_widget.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _navigateToNext();
+  }
+
+  void _navigateToNext() {
+    Timer(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
+      );
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    // Get screen dimensions for responsive sizing
-    final size = MediaQuery.sizeOf(context);
-
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushReplacementNamed(context, '/welcome');
-      },
-      child: Scaffold(
-        backgroundColor: const Color(0xFF2260FF),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Logo image from assets
-              Image.asset(
-                'assets/Splash_Screen_Logo.png',
-                width: size.width * 0.3, // Responsive width
-                fit: BoxFit.contain,
-              ),
-
-              // Responsive vertical spacing
-              SizedBox(height: size.height * 0.03),
-
-              // "Skin" text
-              const Text(
-                'Skin',
-                style: TextStyle(
-                  fontSize: 48,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  height: 1.1, // Keeps the two large text lines close
+    return Scaffold(
+      backgroundColor: const Color(0xFF0066FF),
+      body: Center(
+        child: TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: 0.0, end: 1.0),
+          duration: const Duration(seconds: 2),
+          builder: (context, value, child) {
+            return Opacity(
+              opacity: value,
+              child: Transform.scale(
+                scale: 0.5 + (value * 0.5),
+                child: const LogoWidget(
+                  assetPath: 'assets/Splash_Screen_Logo.png',
+                  width: 200,
+                  height: 200,
                 ),
-                textAlign: TextAlign.center,
               ),
-
-              // "Firts" text
-              const Text(
-                'Firts',
-                style: TextStyle(
-                  fontSize: 48,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w300,
-                  height: 1.1,
-                ),
-                textAlign: TextAlign.center,
-              ),
-
-              // Responsive vertical spacing
-              SizedBox(height: size.height * 0.02),
-
-              // "Dermatology Center" text
-              const Text(
-                'Dermatology Center',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
