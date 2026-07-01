@@ -4,7 +4,7 @@ class AuthViewModel {
       return 'Email is required';
     }
     final emailRegExp = RegExp(
-      r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\\.[a-zA-Z]+',
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
     );
     if (!emailRegExp.hasMatch(value)) {
       return 'Please enter a valid email';
@@ -33,7 +33,7 @@ class AuthViewModel {
     if (value == null || value.isEmpty) {
       return 'Phone Number is required';
     }
-    final phoneRegExp = RegExp(r'^\\+?[0-9]{10,15}$');
+    final phoneRegExp = RegExp(r'^\+?[0-9]{10,15}$');
     if (!phoneRegExp.hasMatch(value)) {
       return 'Please enter a valid phone number';
     }

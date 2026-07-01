@@ -8,6 +8,7 @@ import '../Widgets/password_text_field.dart';
 import '../Widgets/custom_button.dart';
 import '../Widgets/divider_with_text.dart';
 import '../Widgets/social_login_button.dart';
+import '../../Root/root_screen.dart';
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -24,10 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _login() {
     if (_formKey.currentState!.validate()) {
-      setState(() => _isLoading = true);
-      Future.delayed(const Duration(seconds: 2), () {
-        if (mounted) setState(() => _isLoading = false);
-      });
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const RootScreen(),
+        ),
+      );
     }
   }
 
