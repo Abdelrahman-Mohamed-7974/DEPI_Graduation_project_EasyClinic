@@ -42,7 +42,7 @@ class _RootScreenState extends State<RootScreen> {
           borderRadius: BorderRadius.circular(32),
           boxShadow: [
             BoxShadow(
-              color: const Color(0xFF3B72FF).withOpacity(0.3),
+              color: Colors.grey.withValues(alpha: 0.1),
               blurRadius: 10,
               offset: const Offset(0, 5),
             ),
@@ -54,7 +54,7 @@ class _RootScreenState extends State<RootScreen> {
             backgroundColor: const Color(0xFF3B72FF),
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white.withOpacity(0.6),
+            unselectedItemColor: Colors.white.withValues(alpha: 0.6),
             showSelectedLabels: false,
             showUnselectedLabels: false,
             currentIndex: _currentIndex,

@@ -3,6 +3,7 @@ import '../ViewModel/auth_view_model.dart';
 import '../Widgets/auth_header.dart';
 import '../Widgets/password_text_field.dart';
 import '../Widgets/custom_button.dart';
+import '../../Root/root_screen.dart';
 
 class SetPasswordScreen extends StatefulWidget {
   const SetPasswordScreen({super.key});
@@ -16,17 +17,16 @@ class _SetPasswordScreenState extends State<SetPasswordScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
   final AuthViewModel _viewModel = AuthViewModel();
+  // ignore: prefer_final_fields
   bool _isLoading = false;
 
   void _savePassword() {
     if (_formKey.currentState!.validate()) {
-      setState(() => _isLoading = true);
-      Future.delayed(const Duration(seconds: 2), () {
-        if (mounted) {
-          setState(() => _isLoading = false);
-          // Navigate to Home or Login
-        }
-      });
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (_) => const RootScreen()),
+        (route) => false,
+      );
     }
   }
 
