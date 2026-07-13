@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:io';
 import '../../../../core/constants/colors.dart';
 import '../../../empty/empty_page.dart';
+import '../../../help_center/presentation/pages/help_center_page.dart';
 import '../../../privacy_policy/presentation/pages/privacy_policy_page.dart';
 import '../../../settings/presentation/pages/settings_page.dart';
 import '../cubit/profile_cubit.dart';
@@ -32,7 +33,7 @@ class ProfilePage extends StatelessWidget {
             style: TextStyle(
               color: AppColors.primary,
               fontWeight: FontWeight.bold,
-              fontSize: 20,
+              fontSize: 25,
             ),
           ),
           centerTitle: true,
@@ -47,8 +48,8 @@ class ProfilePage extends StatelessWidget {
                   Stack(
                     children: [
                       Container(
-                        width: 106,
-                        height: 106,
+                        width: 130,
+                        height: 130,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
@@ -67,8 +68,8 @@ class ProfilePage extends StatelessWidget {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfilePage()));
                           },
                           child: Container(
-                            width: 28,
-                            height: 28,
+                            width: 35,
+                            height: 35,
                             decoration: const BoxDecoration(
                               color: AppColors.primary,
                               shape: BoxShape.circle,
@@ -76,8 +77,8 @@ class ProfilePage extends StatelessWidget {
                             child: Center(
                               child: SvgPicture.asset(
                                 'assets/icons/pen.svg',
-                                width: 18,
-                                height: 18,
+                                width: 30,
+                                height: 30,
                                 fit: BoxFit.scaleDown,
                                 colorFilter: const ColorFilter.mode(
                                   Colors.white,
@@ -136,13 +137,13 @@ class ProfilePage extends StatelessWidget {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
                 },
               ),
-              ProfileMenuItem(
-                iconPath: 'assets/icons/Group 25.svg',
-                title: 'Help',
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const EmptyPage(title: 'Help')));
-                },
-              ),
+                ProfileMenuItem(
+                  iconPath: 'assets/icons/Group 25.svg',
+                  title: 'Help',
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpCenterPage()));
+                  },
+                ),
               ProfileMenuItem(
                 iconPath: 'assets/icons/log  out.svg',
                 title: 'Logout',

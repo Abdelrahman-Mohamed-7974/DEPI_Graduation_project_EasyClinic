@@ -22,7 +22,7 @@ class PrivacyPolicyPage extends StatelessWidget {
           style: TextStyle(
             color: AppColors.primary,
             fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: 25,
           ),
         ),
         centerTitle: true,

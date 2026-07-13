@@ -78,7 +78,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
           style: TextStyle(
             color: AppColors.primary,
             fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: 25,
           ),
         ),
         centerTitle: true,
@@ -106,8 +106,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
               child: Stack(
                 children: [
                   Container(
-                    width: 120,
-                    height: 120,
+                    width: 130,
+                    height: 130,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -124,8 +124,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     child: GestureDetector(
                       onTap: _pickImage,
                       child: Container(
-                        width: 36,
-                        height: 36,
+                        width: 35,
+                        height: 35,
                         decoration: const BoxDecoration(
                           color: AppColors.primary,
                           shape: BoxShape.circle,
@@ -133,8 +133,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         child: Center(
                           child: SvgPicture.asset(
                             'assets/icons/pen.svg',
-                            width: 18,
-                            height: 18,
+                            width: 30,
+                            height: 30,
                             fit: BoxFit.scaleDown,
                             colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
                           ),

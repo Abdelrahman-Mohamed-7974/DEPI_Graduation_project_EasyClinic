@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/constants/colors.dart';
 import 'notification_settings_page.dart';
+import 'password_manager_page.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -22,7 +23,7 @@ class SettingsPage extends StatelessWidget {
           style: TextStyle(
             color: AppColors.primary,
             fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: 25,
           ),
         ),
         centerTitle: true,
@@ -42,7 +43,9 @@ class SettingsPage extends StatelessWidget {
             _buildSettingsItem(
               iconPath: 'assets/icons/Vector key.svg',
               title: 'Password Manager',
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const PasswordManagerPage()));
+              },
             ),
             const SizedBox(height: 40),
             _buildSettingsItem(
@@ -81,7 +84,7 @@ class SettingsPage extends StatelessWidget {
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 23,
                   fontWeight: FontWeight.w600,
                   color: Colors.black87,
                 ),

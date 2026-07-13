@@ -45,7 +45,7 @@ class ProfileMenuItem extends StatelessWidget {
               child: Text(
                 title,
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 20,
                   fontWeight: FontWeight.w500,
                   color: AppColors.textPrimary,
                 ),
@@ -54,7 +54,7 @@ class ProfileMenuItem extends StatelessWidget {
             const Icon(
               Icons.chevron_right,
               color: AppColors.lightBlue,
-              size: 28,
+              size: 35,
             ),
           ],
         ),

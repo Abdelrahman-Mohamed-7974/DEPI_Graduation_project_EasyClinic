@@ -35,13 +35,13 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
           style: TextStyle(
             color: AppColors.primary,
             fontWeight: FontWeight.bold,
-            fontSize: 20,
+            fontSize: 25,
           ),
         ),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 24.0),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
         child: Column(
           children: [
             _buildSwitchItem('General Notification', generalNotification, (val) => setState(() => generalNotification = val)),
@@ -73,7 +73,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
         Text(
           title,
           style: const TextStyle(
-            fontSize: 22,
+            fontSize: 20,
             fontWeight: FontWeight.w600,
             color: Colors.black87,
           ),
