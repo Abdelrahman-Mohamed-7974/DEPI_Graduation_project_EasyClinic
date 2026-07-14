@@ -6,6 +6,7 @@ import '../Widgets/category_item.dart';
 import '../Widgets/calendar_item.dart';
 import '../Widgets/schedule_card.dart';
 import '../Widgets/doctor_card.dart';
+import '../../Notification/View/notification_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -54,7 +55,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 HomeHeader(
                   userName: 'John Doe',
                   userImage: 'https://i.pravatar.cc/150?img=11',
-                  onNotificationTap: () {},
+                  onNotificationTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const NotificationScreen(),
+                      ),
+                    );
+                  },
                   onSettingsTap: () {},
                 ),
                 const SizedBox(height: 32),
