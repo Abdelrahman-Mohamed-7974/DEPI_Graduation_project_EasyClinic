@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Home/View/home_screen.dart';
+import '../Chat/View/chat_screen.dart';
 
 class RootScreen extends StatefulWidget {
   final Widget homeScreen;
@@ -22,7 +23,7 @@ class _RootScreenState extends State<RootScreen> {
     super.initState();
     _pages = [
       widget.homeScreen,
-      const Scaffold(body: Center(child: Text('Messages'))),
+      const ChatScreen(),
       const Scaffold(body: Center(child: Text('Profile'))),
       const Scaffold(body: Center(child: Text('Calendar'))),
     ];
