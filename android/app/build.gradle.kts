@@ -30,6 +30,24 @@ android {
         versionName = flutter.versionName
     }
 
+    // Two apps from one codebase. Each flavor gets its own applicationId so both
+    // can be installed on the same device at once.
+    //   Patient app: flutter run --flavor patient -t lib/main.dart
+    //   Doctor app:  flutter run --flavor doctor  -t lib/main_doctor.dart
+    flavorDimensions += "app"
+    productFlavors {
+        create("patient") {
+            dimension = "app"
+            // Keeps the original applicationId: com.example.easy_clinic
+            manifestPlaceholders["appName"] = "Easy Clinic"
+        }
+        create("doctor") {
+            dimension = "app"
+            applicationIdSuffix = ".doctor"
+            manifestPlaceholders["appName"] = "Easy Clinic Doctor"
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
