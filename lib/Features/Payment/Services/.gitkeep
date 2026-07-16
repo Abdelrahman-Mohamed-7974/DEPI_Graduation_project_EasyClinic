@@ -1,0 +1,2 @@
+// This folder is reserved for future API integration for the payment feature.
+// It will contain services such as Dio network requests for payments.

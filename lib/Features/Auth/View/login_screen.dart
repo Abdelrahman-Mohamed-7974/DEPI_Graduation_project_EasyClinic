@@ -21,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final AuthViewModel _viewModel = AuthViewModel();
+  // ignore: prefer_final_fields
   bool _isLoading = false;
 
   void _login() {

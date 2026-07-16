@@ -24,6 +24,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final AuthViewModel _viewModel = AuthViewModel();
+  // ignore: prefer_final_fields
   bool _isLoading = false;
 
   void _signup() {
