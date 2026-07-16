@@ -8,7 +8,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// DEV ONLY: set to true to skip splash/welcome/login and go straight to the app.
 /// Must be false for release.
-const bool kBypassLogin = true;
+const bool kBypassLogin = false;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
