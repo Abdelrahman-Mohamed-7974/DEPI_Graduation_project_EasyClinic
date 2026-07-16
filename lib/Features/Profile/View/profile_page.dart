@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:easy_clinic/Features/Auth/View/welcome_screen.dart';
+import 'package:easy_clinic/Features/Auth/View/login_screen.dart';
 import 'package:easy_clinic/Features/Common/View/empty_page.dart';
 import 'package:easy_clinic/Features/HelpCenter/View/help_center_page.dart';
 import 'package:easy_clinic/Features/Payment/View/payment_method_screen.dart';
@@ -10,6 +10,7 @@ import 'package:easy_clinic/Features/Profile/Cubit/user_cubit.dart';
 import 'package:easy_clinic/Features/Profile/View/edit_profile_page.dart';
 import 'package:easy_clinic/Features/Profile/Widgets/profile_menu_item.dart';
 import 'package:easy_clinic/Features/Settings/View/settings_page.dart';
+import 'package:easy_clinic/Features/Auth/Cubit/auth_cubit.dart';
 import 'package:easy_clinic/core/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,8 +33,11 @@ class ProfilePage extends StatelessWidget {
           automaticallyImplyLeading: showBackButton,
           leading: showBackButton
               ? IconButton(
-                  icon: const Icon(Icons.arrow_back_ios, color: AppColors.primary),
-                  onPressed: () => Navigator.pop(context),
+                  icon: const Icon(
+                    Icons.arrow_back_ios,
+                    color: AppColors.primary,
+                  ),
+                  onPressed: () => Navigator.maybePop(context),
                 )
               : null,
           title: const Text(
@@ -191,14 +195,17 @@ class ProfilePage extends StatelessWidget {
                   ProfileMenuItem(
                     iconPath: 'assets/icons/log  out.svg',
                     title: 'Logout',
-                    onTap: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const WelcomeScreen(),
-                        ),
-                        (route) => false,
-                      );
+                    onTap: () async {
+                      await context.read<AuthCubit>().logout();
+                      if (context.mounted) {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                          (route) => false,
+                        );
+                      }
                     },
                   ),
                 ],

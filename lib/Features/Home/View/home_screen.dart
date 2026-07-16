@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../ViewModel/home_view_model.dart';
+import '../Cubit/home_cubit.dart';
 import '../Widgets/home_header.dart';
 import '../Widgets/search_bar_widget.dart';
 import '../Widgets/category_item.dart';
@@ -80,9 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {},
                     ),
                     const SizedBox(width: 24),
-                    const Expanded(
-                      child: SearchBarWidget(),
-                    ),
+                    const Expanded(child: SearchBarWidget()),
                   ],
                 ),
                 const SizedBox(height: 32),
@@ -113,40 +113,46 @@ class _HomeScreenState extends State<HomeScreen> {
                       const SizedBox(height: 20),
                       const ScheduleCard(
                         title: 'Dr. Olivia Turner, M.D.',
-                        description: 'Treatment and prevention of\nskin and photodermatitis.',
+                        description:
+                            'Treatment and prevention of\nskin and photodermatitis.',
                         timeText: '11 Wednesday - Today',
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 24),
-                const DoctorCard(
-                  doctorName: 'Dr. Olivia Turner, M.D.',
-                  specialty: 'Dermato-Endocrinology',
-                  image: 'https://i.pravatar.cc/150?img=5',
-                  rating: 5,
-                  messagesCount: 60,
-                ),
-                const DoctorCard(
-                  doctorName: 'Dr. Alexander Bennett, Ph.D.',
-                  specialty: 'Dermato-Genetics',
-                  image: 'https://i.pravatar.cc/150?img=12',
-                  rating: 4.5,
-                  messagesCount: 40,
-                ),
-                const DoctorCard(
-                  doctorName: 'Dr. Sophia Martinez, Ph.D.',
-                  specialty: 'Cosmetic Bioengineering',
-                  image: 'https://i.pravatar.cc/150?img=9',
-                  rating: 5,
-                  messagesCount: 150,
-                ),
-                const DoctorCard(
-                  doctorName: 'Dr. Michael Davidson, M.D.',
-                  specialty: 'Nano-Dermatology',
-                  image: 'https://i.pravatar.cc/150?img=13',
-                  rating: 4.8,
-                  messagesCount: 90,
+                BlocBuilder<HomeCubit, HomeState>(
+                  builder: (context, state) {
+                    if (state is HomeLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else if (state is HomeLoaded) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: state.doctors.length,
+                        itemBuilder: (context, index) {
+                          final doc = state.doctors[index];
+                          return DoctorCard(
+                            doctorName: doc['name'] as String,
+                            specialty: doc['specialization'] as String,
+                            image: doc['image'] as String,
+                            rating: (doc['rating'] as num).toDouble(),
+                            messagesCount: doc['number_of_reviews'] as int,
+                            isFavorite: (doc['is_favorite_user'] as int?) == 1,
+                            onFavoriteToggle: () {
+                              context.read<HomeCubit>().toggleFavorite(
+                                doc['id'] as int,
+                                (doc['is_favorite_user'] as int?) == 1,
+                              );
+                            },
+                          );
+                        },
+                      );
+                    } else if (state is HomeError) {
+                      return Center(child: Text(state.message));
+                    }
+                    return const SizedBox.shrink();
+                  },
                 ),
               ],
             ),

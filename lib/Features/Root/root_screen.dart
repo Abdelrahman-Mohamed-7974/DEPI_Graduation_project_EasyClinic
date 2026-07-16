@@ -6,10 +6,7 @@ import 'package:flutter/material.dart';
 class RootScreen extends StatefulWidget {
   final Widget homeScreen;
 
-  const RootScreen({
-    super.key,
-    this.homeScreen = const HomeScreen(),
-  });
+  const RootScreen({super.key, this.homeScreen = const HomeScreen()});
 
   @override
   State<RootScreen> createState() => _RootScreenState();
@@ -33,10 +30,7 @@ class _RootScreenState extends State<RootScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _pages,
-      ),
+      body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: Container(
         margin: const EdgeInsets.all(24),
         decoration: BoxDecoration(

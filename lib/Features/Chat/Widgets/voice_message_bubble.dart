@@ -22,11 +22,16 @@ class VoiceMessageBubble extends StatelessWidget {
             children: [
               const CircleAvatar(
                 radius: 18,
-                backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=5'),
+                backgroundImage: NetworkImage(
+                  'https://i.pravatar.cc/150?img=5',
+                ),
               ),
               const SizedBox(width: 8),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
                 decoration: BoxDecoration(
                   color: const Color(0xFFF5F5F5),
                   borderRadius: BorderRadius.circular(16),
@@ -45,16 +50,17 @@ class VoiceMessageBubble extends StatelessWidget {
                       child: SliderTheme(
                         data: SliderThemeData(
                           trackHeight: 3,
-                          thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 5),
-                          overlayShape: const RoundSliderOverlayShape(overlayRadius: 10),
+                          thumbShape: const RoundSliderThumbShape(
+                            enabledThumbRadius: 5,
+                          ),
+                          overlayShape: const RoundSliderOverlayShape(
+                            overlayRadius: 10,
+                          ),
                           activeTrackColor: const Color(0xFF3B72FF),
                           inactiveTrackColor: Colors.grey.shade300,
                           thumbColor: const Color(0xFF3B72FF),
                         ),
-                        child: Slider(
-                          value: 0.4,
-                          onChanged: (value) {},
-                        ),
+                        child: Slider(value: 0.4, onChanged: (value) {}),
                       ),
                     ),
                     const SizedBox(width: 8),
@@ -71,13 +77,7 @@ class VoiceMessageBubble extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          Text(
-            time,
-            style: const TextStyle(
-              fontSize: 11,
-              color: Colors.grey,
-            ),
-          ),
+          Text(time, style: const TextStyle(fontSize: 11, color: Colors.grey)),
         ],
       ),
     );

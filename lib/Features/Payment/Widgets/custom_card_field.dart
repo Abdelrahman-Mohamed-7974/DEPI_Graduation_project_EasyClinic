@@ -39,14 +39,20 @@ class CustomCardField extends StatelessWidget {
             counterText: '',
             filled: true,
             fillColor: Colors.grey.shade100,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Colors.blueAccent, width: 1.5),
+              borderSide: const BorderSide(
+                color: Colors.blueAccent,
+                width: 1.5,
+              ),
             ),
           ),
         ),

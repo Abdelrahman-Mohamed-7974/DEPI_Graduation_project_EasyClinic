@@ -36,10 +36,7 @@ class WelcomeScreen extends StatelessWidget {
               const SizedBox(height: 16),
               const Text(
                 'Your health, our priority.',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Color(0xFF1A1A1A),
-                ),
+                style: TextStyle(fontSize: 16, color: Color(0xFF1A1A1A)),
                 textAlign: TextAlign.center,
               ),
               const Spacer(),
@@ -48,7 +45,9 @@ class WelcomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
                   );
                 },
               ),
@@ -57,7 +56,9 @@ class WelcomeScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const SignupScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const SignupScreen(),
+                    ),
                   );
                 },
                 style: OutlinedButton.styleFrom(
@@ -70,10 +71,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 child: const Text(
                   'Sign Up',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
                 ),
               ),
               const SizedBox(height: 24),

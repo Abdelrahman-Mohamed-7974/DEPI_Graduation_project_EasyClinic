@@ -32,7 +32,12 @@ class ScheduleCard extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           _buildTimelineRow('9 AM', false),
-          _buildTimelineRow('10 AM', true, title: title, description: description),
+          _buildTimelineRow(
+            '10 AM',
+            true,
+            title: title,
+            description: description,
+          ),
           _buildTimelineRow('11 AM', false),
           _buildTimelineRow('12 AM', false),
         ],
@@ -40,7 +45,12 @@ class ScheduleCard extends StatelessWidget {
     );
   }
 
-  Widget _buildTimelineRow(String time, bool hasCard, {String? title, String? description}) {
+  Widget _buildTimelineRow(
+    String time,
+    bool hasCard, {
+    String? title,
+    String? description,
+  }) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Row(
@@ -50,10 +60,7 @@ class ScheduleCard extends StatelessWidget {
             width: 45,
             child: Text(
               time,
-              style: const TextStyle(
-                color: Color(0xFF3B72FF),
-                fontSize: 12,
-              ),
+              style: const TextStyle(color: Color(0xFF3B72FF), fontSize: 12),
             ),
           ),
           Expanded(
@@ -90,7 +97,11 @@ class ScheduleCard extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const Icon(Icons.check_circle, color: Colors.white, size: 16),
+                        const Icon(
+                          Icons.check_circle,
+                          color: Colors.white,
+                          size: 16,
+                        ),
                         const SizedBox(width: 4),
                         const Icon(Icons.cancel, color: Colors.white, size: 16),
                       ],

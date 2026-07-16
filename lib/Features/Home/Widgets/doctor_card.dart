@@ -7,6 +7,8 @@ class DoctorCard extends StatelessWidget {
   final String image;
   final double rating;
   final int messagesCount;
+  final bool isFavorite;
+  final VoidCallback? onFavoriteToggle;
 
   const DoctorCard({
     super.key,
@@ -15,6 +17,8 @@ class DoctorCard extends StatelessWidget {
     required this.image,
     required this.rating,
     required this.messagesCount,
+    this.isFavorite = false,
+    this.onFavoriteToggle,
   });
 
   @override
@@ -28,10 +32,7 @@ class DoctorCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundImage: NetworkImage(image),
-          ),
+          CircleAvatar(radius: 30, backgroundImage: NetworkImage(image)),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
@@ -48,17 +49,17 @@ class DoctorCard extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   specialty,
-                  style: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 12,
-                  ),
+                  style: const TextStyle(color: Colors.black87, fontSize: 12),
                 ),
                 const SizedBox(height: 8),
                 Row(
                   children: [
                     RatingWidget(icon: Icons.star, text: rating.toString()),
                     const SizedBox(width: 8),
-                    RatingWidget(icon: Icons.chat_bubble_outline, text: messagesCount.toString()),
+                    RatingWidget(
+                      icon: Icons.chat_bubble_outline,
+                      text: messagesCount.toString(),
+                    ),
                   ],
                 ),
               ],
@@ -68,7 +69,12 @@ class DoctorCard extends StatelessWidget {
             children: [
               _buildSmallIconButton(Icons.question_mark),
               const SizedBox(height: 8),
-              _buildSmallIconButton(Icons.favorite_border),
+              GestureDetector(
+                onTap: onFavoriteToggle,
+                child: _buildSmallIconButton(
+                  isFavorite ? Icons.favorite : Icons.favorite_border,
+                ),
+              ),
             ],
           ),
         ],
@@ -83,11 +89,7 @@ class DoctorCard extends StatelessWidget {
         color: Colors.white,
         shape: BoxShape.circle,
       ),
-      child: Icon(
-        icon,
-        color: const Color(0xFF3B72FF),
-        size: 16,
-      ),
+      child: Icon(icon, color: const Color(0xFF3B72FF), size: 16),
     );
   }
 }

@@ -34,7 +34,7 @@ class _PasswordManagerPageState extends State<PasswordManagerPage> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: AppColors.primary),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.maybePop(context),
         ),
         title: const Text(
           'Password Manager',
@@ -172,8 +172,10 @@ class _PasswordManagerPageState extends State<PasswordManagerPage> {
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 20,
+              ),
               isDense: true,
               suffixIcon: IconButton(
                 icon: Icon(

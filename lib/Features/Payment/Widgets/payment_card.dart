@@ -38,7 +38,11 @@ class PaymentCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Icon(Icons.credit_card, color: Colors.white, size: 36),
-              Icon(Icons.contactless, color: Colors.white.withValues(alpha: 0.8), size: 28),
+              Icon(
+                Icons.contactless,
+                color: Colors.white.withValues(alpha: 0.8),
+                size: 28,
+              ),
             ],
           ),
           const SizedBox(height: 32),

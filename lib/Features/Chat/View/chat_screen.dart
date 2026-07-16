@@ -37,7 +37,7 @@ class _ChatScreenState extends State<ChatScreen> {
         children: [
           ChatHeader(
             doctorName: 'Dr. Olivia Turner',
-            onBackTap: () => Navigator.pop(context),
+            onBackTap: () => Navigator.maybePop(context),
             onCallTap: () {},
             onVideoTap: () {},
           ),

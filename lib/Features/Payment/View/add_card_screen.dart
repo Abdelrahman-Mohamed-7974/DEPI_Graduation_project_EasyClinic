@@ -32,7 +32,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.maybePop(context),
         ),
         title: const Text(
           'Add Card Details',
@@ -61,7 +61,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
               hint: '**** **** **** 1234',
               keyboardType: TextInputType.number,
               maxLength: 16,
-              onChanged: (val) => widget.viewModel.updateCardDetails(number: val),
+              onChanged: (val) =>
+                  widget.viewModel.updateCardDetails(number: val),
             ),
             Row(
               children: [
@@ -71,7 +72,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     hint: 'MM/YY',
                     keyboardType: TextInputType.datetime,
                     maxLength: 5,
-                    onChanged: (val) => widget.viewModel.updateCardDetails(expiry: val),
+                    onChanged: (val) =>
+                        widget.viewModel.updateCardDetails(expiry: val),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -81,7 +83,8 @@ class _AddCardScreenState extends State<AddCardScreen> {
                     hint: '***',
                     keyboardType: TextInputType.number,
                     maxLength: 3,
-                    onChanged: (val) => widget.viewModel.updateCardDetails(cvvCode: val),
+                    onChanged: (val) =>
+                        widget.viewModel.updateCardDetails(cvvCode: val),
                   ),
                 ),
               ],

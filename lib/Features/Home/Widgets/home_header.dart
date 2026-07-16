@@ -21,20 +21,14 @@ class HomeHeader extends StatelessWidget {
       children: [
         Row(
           children: [
-            CircleAvatar(
-              radius: 24,
-              backgroundImage: NetworkImage(userImage),
-            ),
+            CircleAvatar(radius: 24, backgroundImage: NetworkImage(userImage)),
             const SizedBox(width: 12),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   'Hi, WelcomeBack',
-                  style: TextStyle(
-                    color: Color(0xFF3B72FF),
-                    fontSize: 12,
-                  ),
+                  style: TextStyle(color: Color(0xFF3B72FF), fontSize: 12),
                 ),
                 Text(
                   userName,
@@ -68,11 +62,7 @@ class HomeHeader extends StatelessWidget {
           color: Color(0xFFE4ECFF),
           shape: BoxShape.circle,
         ),
-        child: Icon(
-          icon,
-          color: const Color(0xFF3B72FF),
-          size: 20,
-        ),
+        child: Icon(icon, color: const Color(0xFF3B72FF), size: 20),
       ),
     );
   }

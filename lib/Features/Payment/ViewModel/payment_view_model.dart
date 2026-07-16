@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class PaymentViewModel extends ChangeNotifier {
   String selectedMethod = 'Card';
-  
+
   String cardHolderName = '';
   String cardNumber = '';
   String expiryDate = '';

@@ -21,7 +21,11 @@ class SocialLoginButton extends StatelessWidget {
         children: [
           // Typically an SVG or PNG asset
           // Using a placeholder Icon if iconPath is not specified or for simplicity
-          const Icon(Icons.g_mobiledata, size: 28, color: Colors.blue), // Replace with actual Google Logo if needed
+          const Icon(
+            Icons.g_mobiledata,
+            size: 28,
+            color: Colors.blue,
+          ), // Replace with actual Google Logo if needed
           const SizedBox(width: 8),
           Text(text),
         ],

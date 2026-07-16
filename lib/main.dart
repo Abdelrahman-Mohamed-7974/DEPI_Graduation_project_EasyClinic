@@ -2,9 +2,13 @@ import 'package:easy_clinic/Features/Auth/View/splash_screen.dart';
 import 'package:easy_clinic/Features/Profile/Cubit/user_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:easy_clinic/core/database/database_helper.dart';
+import 'package:easy_clinic/Features/Auth/Cubit/auth_cubit.dart';
+import 'package:easy_clinic/Features/Home/Cubit/home_cubit.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await DatabaseHelper.instance.database; // Ensure database is initialized
   runApp(const MyApp());
 }
 
@@ -13,8 +17,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => UserCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => UserCubit()),
+        BlocProvider(create: (_) => AuthCubit()..checkSession()),
+        BlocProvider(create: (_) => HomeCubit()..loadHomeData()),
+      ],
       child: MaterialApp(
         title: 'Easy Clinic',
         theme: ThemeData(

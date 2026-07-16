@@ -15,7 +15,7 @@ class PaymentSummaryScreen extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.maybePop(context),
         ),
         title: const Text(
           'Payment Summary',
@@ -40,10 +40,7 @@ class PaymentSummaryScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Appointment Details',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 16),
                   SummaryItem(title: 'Doctor', value: 'Dr. Olivia Turner'),
@@ -65,16 +62,17 @@ class PaymentSummaryScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Payment Details',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 16),
                   SummaryItem(title: 'Consultation Fee', value: '100 USD'),
                   SummaryItem(title: 'Tax', value: '0 USD'),
                   Divider(height: 32),
-                  SummaryItem(title: 'Total Amount', value: '100 USD', isTotal: true),
+                  SummaryItem(
+                    title: 'Total Amount',
+                    value: '100 USD',
+                    isTotal: true,
+                  ),
                 ],
               ),
             ),

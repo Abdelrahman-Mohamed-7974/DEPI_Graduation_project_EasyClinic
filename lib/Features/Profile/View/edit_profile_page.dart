@@ -56,13 +56,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   void _saveProfile() {
     context.read<UserCubit>().updateProfile(
-          fullName: _nameController.text,
-          phoneNumber: _phoneController.text,
-          email: _emailController.text,
-          dateOfBirth: _dobController.text,
-          profileImagePath: _imagePath ?? '',
-        );
-    Navigator.pop(context);
+      fullName: _nameController.text,
+      phoneNumber: _phoneController.text,
+      email: _emailController.text,
+      dateOfBirth: _dobController.text,
+      profileImagePath: _imagePath ?? '',
+    );
+    Navigator.maybePop(context);
   }
 
   @override
@@ -74,7 +74,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: AppColors.primary),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.maybePop(context),
         ),
         title: const Text(
           'Profile',
@@ -211,13 +211,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
           ),
           child: TextField(
             controller: controller,
-            style: const TextStyle(
-              fontSize: 16,
-              color: AppColors.textPrimary,
-            ),
+            style: const TextStyle(fontSize: 16, color: AppColors.textPrimary),
             decoration: const InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 16,
+              ),
               isDense: true,
             ),
           ),

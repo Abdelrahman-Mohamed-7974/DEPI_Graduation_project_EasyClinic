@@ -9,10 +9,7 @@ class TermsAndConditionsText extends StatelessWidget {
     return RichText(
       textAlign: TextAlign.center,
       text: TextSpan(
-        style: const TextStyle(
-          fontSize: 12,
-          color: Color(0xFF757575),
-        ),
+        style: const TextStyle(fontSize: 12, color: Color(0xFF757575)),
         children: [
           const TextSpan(text: 'By continuing, you agree to our '),
           TextSpan(

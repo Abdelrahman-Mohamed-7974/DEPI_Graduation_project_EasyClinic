@@ -1,54 +1,66 @@
 import 'package:flutter/material.dart';
+import '../../../../core/database/database_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ChatViewModel extends ChangeNotifier {
-  final List<Map<String, dynamic>> _messages = [
-    {
-      'text': 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      'time': '09:00',
-      'isSent': true,
-      'isVoice': false,
-    },
-    {
-      'text': 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      'time': '09:30',
-      'isSent': false,
-      'isVoice': false,
-    },
-    {
-      'text': 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      'time': '09:43',
-      'isSent': true,
-      'isVoice': false,
-    },
-    {
-      'text': '',
-      'time': '09:50',
-      'isSent': false,
-      'isVoice': true,
-      'voiceDuration': '02:50',
-    },
-    {
-      'text': 'lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      'time': '09:55',
-      'isSent': true,
-      'isVoice': false,
-    },
-  ];
-
+  List<Map<String, dynamic>> _messages = [];
   final TextEditingController messageController = TextEditingController();
+  final int conversationId = 1; // Default for demo
 
   List<Map<String, dynamic>> get messages => _messages;
 
-  void sendMessage() {
+  ChatViewModel() {
+    _loadMessages();
+  }
+
+  Future<void> _loadMessages() async {
+    final db = await DatabaseHelper.instance.database;
+    final result = await db.query(
+      'messages',
+      where: 'conversation_id = ?',
+      whereArgs: [conversationId],
+      orderBy: 'id ASC',
+    );
+
+    final prefs = await SharedPreferences.getInstance();
+    final userId = prefs.getInt('loggedInUserId') ?? 1;
+
+    _messages = result.map((m) {
+      return {
+        'text': m['text'],
+        'time': m['time'],
+        'isSent': m['sender_id'] == userId,
+        'isVoice': false, // mock
+      };
+    }).toList();
+    notifyListeners();
+  }
+
+  Future<void> sendMessage() async {
     if (messageController.text.trim().isNotEmpty) {
       final now = DateTime.now();
-      final timeString = '${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}';
+      final timeString =
+          '${now.hour.toString().padLeft(2, '0')}:${now.minute.toString().padLeft(2, '0')}';
+      final text = messageController.text.trim();
+
+      final prefs = await SharedPreferences.getInstance();
+      final userId = prefs.getInt('loggedInUserId') ?? 1;
+
+      final db = await DatabaseHelper.instance.database;
+      await db.insert('messages', {
+        'conversation_id': conversationId,
+        'sender_id': userId,
+        'text': text,
+        'time': timeString,
+      });
+
       _messages.add({
-        'text': messageController.text.trim(),
+        'text': text,
         'time': timeString,
         'isSent': true,
         'isVoice': false,
       });
+
       messageController.clear();
       notifyListeners();
     }

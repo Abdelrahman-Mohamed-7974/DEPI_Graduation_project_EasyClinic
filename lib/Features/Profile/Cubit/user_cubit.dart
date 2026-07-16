@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../../../../core/database/database_helper.dart';
 
 class UserState {
   final String fullName;
@@ -35,26 +36,42 @@ class UserState {
 
 class UserCubit extends Cubit<UserState> {
   UserCubit()
-      : super(UserState(
+    : super(
+        UserState(
           fullName: 'John Doe',
           phoneNumber: '+123 567 89000',
           email: 'johndoe@example.com',
           dateOfBirth: 'DD / MM /YYYY',
           profileImagePath: '',
-        )) {
-    _loadFromPrefs();
+        ),
+      ) {
+    _loadFromDb();
   }
 
-  Future<void> _loadFromPrefs() async {
+  Future<void> _loadFromDb() async {
     final prefs = await SharedPreferences.getInstance();
-    emit(UserState(
-      fullName: prefs.getString('fullName') ?? state.fullName,
-      phoneNumber: prefs.getString('phoneNumber') ?? state.phoneNumber,
-      email: prefs.getString('email') ?? state.email,
-      dateOfBirth: prefs.getString('dateOfBirth') ?? state.dateOfBirth,
-      profileImagePath:
-          prefs.getString('profileImagePath') ?? state.profileImagePath,
-    ));
+    final userId = prefs.getInt('loggedInUserId');
+    if (userId != null) {
+      final db = await DatabaseHelper.instance.database;
+      final result = await db.query(
+        'users',
+        where: 'id = ?',
+        whereArgs: [userId],
+      );
+      if (result.isNotEmpty) {
+        final user = result.first;
+        emit(
+          UserState(
+            fullName: user['name'] as String? ?? state.fullName,
+            phoneNumber: user['phone'] as String? ?? state.phoneNumber,
+            email: user['email'] as String? ?? state.email,
+            dateOfBirth: user['birth_date'] as String? ?? state.dateOfBirth,
+            profileImagePath:
+                user['profile_image'] as String? ?? state.profileImagePath,
+          ),
+        );
+      }
+    }
   }
 
   void updateProfile({
@@ -64,24 +81,45 @@ class UserCubit extends Cubit<UserState> {
     String? dateOfBirth,
     String? profileImagePath,
   }) async {
-    emit(state.copyWith(
-      fullName: fullName,
-      phoneNumber: phoneNumber,
-      email: email,
-      dateOfBirth: dateOfBirth,
-      profileImagePath: profileImagePath,
-    ));
+    emit(
+      state.copyWith(
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+        email: email,
+        dateOfBirth: dateOfBirth,
+        profileImagePath: profileImagePath,
+      ),
+    );
+
     final prefs = await SharedPreferences.getInstance();
-    if (fullName != null) await prefs.setString('fullName', fullName);
-    if (phoneNumber != null) {
-      await prefs.setString('phoneNumber', phoneNumber);
-    }
-    if (email != null) await prefs.setString('email', email);
-    if (dateOfBirth != null) {
-      await prefs.setString('dateOfBirth', dateOfBirth);
-    }
-    if (profileImagePath != null) {
-      await prefs.setString('profileImagePath', profileImagePath);
+    final userId = prefs.getInt('loggedInUserId');
+    if (userId != null) {
+      final db = await DatabaseHelper.instance.database;
+      final updateData = <String, dynamic>{};
+      if (fullName != null) {
+        updateData['name'] = fullName;
+      }
+      if (phoneNumber != null) {
+        updateData['phone'] = phoneNumber;
+      }
+      if (email != null) {
+        updateData['email'] = email;
+      }
+      if (dateOfBirth != null) {
+        updateData['birth_date'] = dateOfBirth;
+      }
+      if (profileImagePath != null) {
+        updateData['profile_image'] = profileImagePath;
+      }
+
+      if (updateData.isNotEmpty) {
+        await db.update(
+          'users',
+          updateData,
+          where: 'id = ?',
+          whereArgs: [userId],
+        );
+      }
     }
   }
 }

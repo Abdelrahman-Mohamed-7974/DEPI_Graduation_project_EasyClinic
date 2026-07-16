@@ -30,7 +30,8 @@ class _DatePickerFieldState extends State<DatePickerField> {
     if (picked != null) {
       // Formatted date simply
       setState(() {
-        widget.controller.text = "${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}";
+        widget.controller.text =
+            "${picked.year}-${picked.month.toString().padLeft(2, '0')}-${picked.day.toString().padLeft(2, '0')}";
       });
     }
   }

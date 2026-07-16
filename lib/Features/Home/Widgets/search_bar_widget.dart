@@ -14,10 +14,7 @@ class SearchBarWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(
-            Icons.tune,
-            color: Colors.grey,
-          ),
+          const Icon(Icons.tune, color: Colors.grey),
           const SizedBox(width: 8),
           const Expanded(
             child: TextField(
@@ -28,10 +25,7 @@ class SearchBarWidget extends StatelessWidget {
               ),
             ),
           ),
-          const Icon(
-            Icons.search,
-            color: Color(0xFF3B72FF),
-          ),
+          const Icon(Icons.search, color: Color(0xFF3B72FF)),
         ],
       ),
     );

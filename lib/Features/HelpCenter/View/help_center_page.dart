@@ -22,7 +22,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.maybePop(context),
         ),
         title: const Text(
           'Help Center',
@@ -38,16 +38,17 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
         children: [
           Container(
             color: AppColors.primary,
-            padding:
-                const EdgeInsets.only(left: 30, right: 30, bottom: 24, top: 10),
+            padding: const EdgeInsets.only(
+              left: 30,
+              right: 30,
+              bottom: 24,
+              top: 10,
+            ),
             child: Column(
               children: [
                 const Text(
                   'How Can We Help You?',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
+                  style: TextStyle(color: Colors.white, fontSize: 18),
                 ),
                 const SizedBox(height: 20),
                 Container(
@@ -305,10 +306,7 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
     );
   }
 
-  Widget _buildContactItem({
-    required String iconPath,
-    required String title,
-  }) {
+  Widget _buildContactItem({required String iconPath, required String title}) {
     return Row(
       children: [
         Container(
@@ -323,8 +321,10 @@ class _HelpCenterPageState extends State<HelpCenterPage> {
               iconPath,
               width: 24,
               height: 24,
-              colorFilter:
-                  const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(
+                AppColors.primary,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ),

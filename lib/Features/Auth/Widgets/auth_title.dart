@@ -4,11 +4,7 @@ class AuthTitle extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const AuthTitle({
-    super.key,
-    required this.title,
-    required this.subtitle,
-  });
+  const AuthTitle({super.key, required this.title, required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +22,7 @@ class AuthTitle extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           subtitle,
-          style: const TextStyle(
-            fontSize: 14,
-            color: Color(0xFF757575),
-          ),
+          style: const TextStyle(fontSize: 14, color: Color(0xFF757575)),
         ),
       ],
     );

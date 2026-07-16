@@ -4,7 +4,8 @@ class NotificationViewModel extends ChangeNotifier {
   final List<Map<String, dynamic>> _notifications = [
     {
       'title': 'Scheduled Appointment',
-      'description': 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'description':
+          'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       'time': '2 M',
       'icon': Icons.calendar_today,
       'section': 'Today',
@@ -12,7 +13,8 @@ class NotificationViewModel extends ChangeNotifier {
     },
     {
       'title': 'Scheduled Change',
-      'description': 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'description':
+          'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       'time': '2 H',
       'icon': Icons.calendar_today,
       'section': 'Today',
@@ -20,7 +22,8 @@ class NotificationViewModel extends ChangeNotifier {
     },
     {
       'title': 'Medical Notes',
-      'description': 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'description':
+          'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       'time': '3 H',
       'icon': Icons.calendar_today,
       'section': 'Today',
@@ -28,7 +31,8 @@ class NotificationViewModel extends ChangeNotifier {
     },
     {
       'title': 'Scheduled Appointment',
-      'description': 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'description':
+          'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       'time': '1 D',
       'icon': Icons.calendar_today,
       'section': 'Yesterday',
@@ -36,7 +40,8 @@ class NotificationViewModel extends ChangeNotifier {
     },
     {
       'title': 'Medical History Update',
-      'description': 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      'description':
+          'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
       'time': '5 D',
       'icon': Icons.calendar_today,
       'section': '15 April',

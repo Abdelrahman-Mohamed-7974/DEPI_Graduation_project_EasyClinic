@@ -17,7 +17,9 @@ class ChatBubble extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Column(
-        crossAxisAlignment: isSent ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+        crossAxisAlignment: isSent
+            ? CrossAxisAlignment.end
+            : CrossAxisAlignment.start,
         children: [
           Container(
             constraints: BoxConstraints(
@@ -29,26 +31,21 @@ class ChatBubble extends StatelessWidget {
               borderRadius: BorderRadius.only(
                 topLeft: const Radius.circular(16),
                 topRight: const Radius.circular(16),
-                bottomLeft: isSent ? const Radius.circular(16) : const Radius.circular(4),
-                bottomRight: isSent ? const Radius.circular(4) : const Radius.circular(16),
+                bottomLeft: isSent
+                    ? const Radius.circular(16)
+                    : const Radius.circular(4),
+                bottomRight: isSent
+                    ? const Radius.circular(4)
+                    : const Radius.circular(16),
               ),
             ),
             child: Text(
               text,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.black87,
-              ),
+              style: const TextStyle(fontSize: 14, color: Colors.black87),
             ),
           ),
           const SizedBox(height: 4),
-          Text(
-            time,
-            style: const TextStyle(
-              fontSize: 11,
-              color: Colors.grey,
-            ),
-          ),
+          Text(time, style: const TextStyle(fontSize: 11, color: Colors.grey)),
         ],
       ),
     );

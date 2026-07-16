@@ -37,7 +37,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.maybePop(context),
         ),
         title: const Text(
           'Payment Method',
@@ -52,10 +52,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           children: [
             const Text(
               'Select a payment method',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
-              ),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 24),
             PaymentMethodCard(

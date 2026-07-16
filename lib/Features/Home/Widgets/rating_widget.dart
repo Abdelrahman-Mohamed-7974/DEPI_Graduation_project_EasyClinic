@@ -4,11 +4,7 @@ class RatingWidget extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const RatingWidget({
-    super.key,
-    required this.icon,
-    required this.text,
-  });
+  const RatingWidget({super.key, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -16,17 +12,15 @@ class RatingWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
       decoration: BoxDecoration(
         color: Colors.amber.withValues(alpha: 0.2),
-        border: Border.all(color: const Color(0xFF3B72FF).withValues(alpha: 0.3)),
+        border: Border.all(
+          color: const Color(0xFF3B72FF).withValues(alpha: 0.3),
+        ),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            color: const Color(0xFF3B72FF),
-            size: 14,
-          ),
+          Icon(icon, color: const Color(0xFF3B72FF), size: 14),
           const SizedBox(width: 4),
           Text(
             text,

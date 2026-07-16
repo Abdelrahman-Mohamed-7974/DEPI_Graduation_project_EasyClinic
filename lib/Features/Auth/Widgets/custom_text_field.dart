@@ -50,7 +50,10 @@ class CustomTextField extends StatelessWidget {
             suffixIcon: suffixIcon,
             filled: true,
             fillColor: const Color(0xFFF5F7FA),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Color(0xFFE0E0E0)),
@@ -67,10 +70,7 @@ class CustomTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(color: Color(0xFFD32F2F)),
             ),
-            hintStyle: const TextStyle(
-              fontSize: 14,
-              color: Color(0xFF757575),
-            ),
+            hintStyle: const TextStyle(fontSize: 14, color: Color(0xFF757575)),
           ),
         ),
       ],

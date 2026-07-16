@@ -43,11 +43,7 @@ class _SuccessAnimationWidgetState extends State<SuccessAnimationWidget>
           color: Colors.green,
           shape: BoxShape.circle,
         ),
-        child: const Icon(
-          Icons.check,
-          color: Colors.white,
-          size: 60,
-        ),
+        child: const Icon(Icons.check, color: Colors.white, size: 60),
       ),
     );
   }

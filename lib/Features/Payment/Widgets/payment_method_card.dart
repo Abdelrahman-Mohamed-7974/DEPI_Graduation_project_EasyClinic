@@ -22,7 +22,9 @@ class PaymentMethodCard extends StatelessWidget {
         margin: const EdgeInsets.only(bottom: 16),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blueAccent.withValues(alpha: 0.1) : Colors.white,
+          color: isSelected
+              ? Colors.blueAccent.withValues(alpha: 0.1)
+              : Colors.white,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
             color: isSelected ? Colors.blueAccent : Colors.grey.shade300,
@@ -48,15 +50,9 @@ class PaymentMethodCard extends StatelessWidget {
               ),
             ),
             if (isSelected)
-              const Icon(
-                Icons.check_circle,
-                color: Colors.blueAccent,
-              )
+              const Icon(Icons.check_circle, color: Colors.blueAccent)
             else
-              Icon(
-                Icons.circle_outlined,
-                color: Colors.grey.shade400,
-              ),
+              Icon(Icons.circle_outlined, color: Colors.grey.shade400),
           ],
         ),
       ),

@@ -66,11 +66,7 @@ class ChatHeader extends StatelessWidget {
           border: Border.all(color: Colors.white.withValues(alpha: 0.5)),
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Icon(
-          icon,
-          color: Colors.white,
-          size: 20,
-        ),
+        child: Icon(icon, color: Colors.white, size: 20),
       ),
     );
   }

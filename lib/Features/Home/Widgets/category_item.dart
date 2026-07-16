@@ -18,18 +18,11 @@ class CategoryItem extends StatelessWidget {
       onTap: onTap,
       child: Column(
         children: [
-          Icon(
-            icon,
-            color: const Color(0xFF3B72FF),
-            size: 28,
-          ),
+          Icon(icon, color: const Color(0xFF3B72FF), size: 28),
           const SizedBox(height: 4),
           Text(
             title,
-            style: const TextStyle(
-              color: Color(0xFF3B72FF),
-              fontSize: 12,
-            ),
+            style: const TextStyle(color: Color(0xFF3B72FF), fontSize: 12),
           ),
         ],
       ),

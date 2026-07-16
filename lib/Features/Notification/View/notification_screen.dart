@@ -40,7 +40,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 NotificationHeader(
-                  onBackTap: () => Navigator.pop(context),
+                  onBackTap: () => Navigator.maybePop(context),
                   onNewsTap: () {},
                 ),
                 const SizedBox(height: 24),
@@ -82,13 +82,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
   List<Widget> _buildNotificationSection(String section) {
     return _viewModel.notifications
         .where((n) => n['section'] == section)
-        .map((n) => NotificationItem(
-              title: n['title'],
-              description: n['description'],
-              time: n['time'],
-              icon: n['icon'],
-              isHighlighted: n['isHighlighted'],
-            ))
+        .map(
+          (n) => NotificationItem(
+            title: n['title'],
+            description: n['description'],
+            time: n['time'],
+            icon: n['icon'],
+            isHighlighted: n['isHighlighted'],
+          ),
+        )
         .toList();
   }
 }

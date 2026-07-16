@@ -29,7 +29,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: AppColors.primary),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => Navigator.maybePop(context),
         ),
         title: const Text(
           'Notification Setting',
@@ -117,10 +117,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
         ),
         Transform.scale(
           scale: 1.3,
-          child: CustomSvgSwitch(
-            value: value,
-            onChanged: onChanged,
-          ),
+          child: CustomSvgSwitch(value: value, onChanged: onChanged),
         ),
       ],
     );

@@ -52,10 +52,7 @@ class ChatInputBar extends StatelessWidget {
                 decoration: const InputDecoration(
                   border: InputBorder.none,
                   hintText: 'Write Here...',
-                  hintStyle: TextStyle(
-                    color: Colors.grey,
-                    fontSize: 14,
-                  ),
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
               ),
             ),
@@ -78,11 +75,7 @@ class ChatInputBar extends StatelessWidget {
                 color: Color(0xFF3B72FF),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
-                Icons.send,
-                color: Colors.white,
-                size: 20,
-              ),
+              child: const Icon(Icons.send, color: Colors.white, size: 20),
             ),
           ),
         ],

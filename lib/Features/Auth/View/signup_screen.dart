@@ -10,6 +10,7 @@ import '../Widgets/custom_button.dart';
 import '../Widgets/divider_with_text.dart';
 import '../Widgets/social_login_button.dart';
 import '../Widgets/terms_and_conditions_text.dart';
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -29,9 +30,18 @@ class _SignupScreenState extends State<SignupScreen> {
 
   void _signup() {
     if (_formKey.currentState!.validate()) {
+      final userData = {
+        'name': _nameController.text.trim(),
+        'email': _emailController.text.trim(),
+        'phone': _mobileController.text.trim(),
+        'birth_date': _dobController.text.trim(),
+        'profile_image': '', // Placeholder
+      };
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const SetPasswordScreen()),
+        MaterialPageRoute(
+          builder: (context) => SetPasswordScreen(userData: userData),
+        ),
       );
     }
   }
