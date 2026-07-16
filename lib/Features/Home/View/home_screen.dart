@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../Notification/View/notification_screen.dart';
 import '../ViewModel/home_view_model.dart';
 import '../Widgets/home_header.dart';
 import '../Widgets/search_bar_widget.dart';
@@ -55,13 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 HomeHeader(
                   userName: 'John Doe',
                   userImage: 'https://i.pravatar.cc/150?img=11',
-                  onNotificationTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (_) => const NotificationScreen(),
-                      ),
-                    );
-                  },
+                  onNotificationTap: () {},
                   onSettingsTap: () {},
                 ),
                 const SizedBox(height: 32),

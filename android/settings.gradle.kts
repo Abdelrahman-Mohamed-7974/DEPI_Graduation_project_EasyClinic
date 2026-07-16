@@ -12,9 +12,6 @@ pluginManagement {
 
     repositories {
         google()
-        // Google's mirror of Maven Central — its CDN transfers reliably here,
-        // whereas direct repo.maven.apache.org (Fastly) downloads stall.
-        maven { url = uri("https://maven-central.storage-download.googleapis.com/maven2/") }
         mavenCentral()
         gradlePluginPortal()
     }

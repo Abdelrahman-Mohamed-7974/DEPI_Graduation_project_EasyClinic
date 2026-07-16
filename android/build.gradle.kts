@@ -1,9 +1,6 @@
 allprojects {
     repositories {
         google()
-        // Google's mirror of Maven Central — reliable CDN transfers, unlike
-        // direct repo.maven.apache.org (Fastly) downloads which stall here.
-        maven { url = uri("https://maven-central.storage-download.googleapis.com/maven2/") }
         mavenCentral()
     }
 }

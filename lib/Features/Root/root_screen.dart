@@ -1,6 +1,5 @@
 import 'package:easy_clinic/Features/Home/View/home_screen.dart';
 import 'package:easy_clinic/Features/Profile/View/profile_page.dart';
-import 'package:easy_clinic/Features/Message/View/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 class RootScreen extends StatefulWidget {
@@ -24,7 +23,7 @@ class _RootScreenState extends State<RootScreen> {
     super.initState();
     _pages = [
       widget.homeScreen,
-      const ChatScreen(),
+      const Scaffold(body: Center(child: Text('Messages'))),
       const ProfilePage(),
       const Scaffold(body: Center(child: Text('Calendar'))),
     ];
