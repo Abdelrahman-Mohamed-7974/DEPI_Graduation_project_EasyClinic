@@ -7,6 +7,7 @@ import '../Widgets/calendar_item.dart';
 import '../Widgets/schedule_card.dart';
 import '../Widgets/doctor_card.dart';
 import '../../Notification/View/notification_screen.dart';
+import '../../DoctorProfile/View/doctor_profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -120,33 +121,89 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 const SizedBox(height: 24),
-                const DoctorCard(
+                DoctorCard(
                   doctorName: 'Dr. Olivia Turner, M.D.',
                   specialty: 'Dermato-Endocrinology',
                   image: 'https://i.pravatar.cc/150?img=5',
                   rating: 5,
                   messagesCount: 60,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DoctorProfileScreen(
+                          doctorName: 'Dr. Olivia Turner, M.D.',
+                          specialty: 'Dermato-Endocrinology',
+                          image: 'https://i.pravatar.cc/150?img=5',
+                          rating: 5,
+                          messagesCount: 60,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                const DoctorCard(
+                DoctorCard(
                   doctorName: 'Dr. Alexander Bennett, Ph.D.',
                   specialty: 'Dermato-Genetics',
                   image: 'https://i.pravatar.cc/150?img=12',
                   rating: 4.5,
                   messagesCount: 40,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DoctorProfileScreen(
+                          doctorName: 'Dr. Alexander Bennett, Ph.D.',
+                          specialty: 'Dermato-Genetics',
+                          image: 'https://i.pravatar.cc/150?img=12',
+                          rating: 4.5,
+                          messagesCount: 40,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                const DoctorCard(
+                DoctorCard(
                   doctorName: 'Dr. Sophia Martinez, Ph.D.',
                   specialty: 'Cosmetic Bioengineering',
                   image: 'https://i.pravatar.cc/150?img=9',
                   rating: 5,
                   messagesCount: 150,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DoctorProfileScreen(
+                          doctorName: 'Dr. Sophia Martinez, Ph.D.',
+                          specialty: 'Cosmetic Bioengineering',
+                          image: 'https://i.pravatar.cc/150?img=9',
+                          rating: 5,
+                          messagesCount: 150,
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                const DoctorCard(
+                DoctorCard(
                   doctorName: 'Dr. Michael Davidson, M.D.',
                   specialty: 'Nano-Dermatology',
                   image: 'https://i.pravatar.cc/150?img=13',
                   rating: 4.8,
                   messagesCount: 90,
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const DoctorProfileScreen(
+                          doctorName: 'Dr. Michael Davidson, M.D.',
+                          specialty: 'Nano-Dermatology',
+                          image: 'https://i.pravatar.cc/150?img=13',
+                          rating: 4.8,
+                          messagesCount: 90,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),

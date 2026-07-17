@@ -7,6 +7,7 @@ class DoctorCard extends StatelessWidget {
   final String image;
   final double rating;
   final int messagesCount;
+  final VoidCallback? onTap;
 
   const DoctorCard({
     super.key,
@@ -15,12 +16,15 @@ class DoctorCard extends StatelessWidget {
     required this.image,
     required this.rating,
     required this.messagesCount,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 12),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: const Color(0xFFE4ECFF),
@@ -72,6 +76,7 @@ class DoctorCard extends StatelessWidget {
             ],
           ),
         ],
+      ),
       ),
     );
   }
